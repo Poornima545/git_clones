@@ -77,15 +77,14 @@
   },
   "todos": [
     {
-      "userId": 1,
-      "id": 1,
-      "title": "John Doe",
-      "completed": false
-    },
-    {
-      "title": "todo",
+      "title": "Edited todo item zzzz",
       "completed": "true",
       "id": 3
+    },
+    {
+      "title": "test tesr",
+      "completed": true,
+      "id": 4
     }
   ]
 }

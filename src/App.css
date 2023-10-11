@@ -15,20 +15,28 @@
 }
 
 .input-type {
-  padding: 0.7rem 3rem;
+  padding: 0.7rem 0.5rem;
 }
 
 .todo {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid;
+  padding: 0 5px;
+}
+.todo > p {
+  flex-grow: 1;
+}
+.todolist {
+  max-width: 450px;
 }
 
-.edit-todo,
-.delete-todo {
-  padding: 0.8rem 2rem;
-  background-color: blue;
-  border: none;
-  color: white;
-  margin-left: 9rem;
-  border-radius: 5px;
+.todolist form {
+  display: flex;
+  align-items: center;
+}
+.todolist input {
+  flex-grow: 1;
 }

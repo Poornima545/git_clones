@@ -5,23 +5,33 @@ import Todo from "./Todo";
 function TodoList() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
+  const [itemInEdit, setItemInEdit] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/todos").then((res) => setTodos(res.data));
+    getTodos();
   }, []);
 
+  function getTodos() {
+    axios.get("http://localhost:3000/todos").then((res) => setTodos(res.data));
+  }
   const handleChange = (e) => {
     // console.log(e.target.value);
     setInput(e.target.value);
   };
 
-  const deleteTodo = (deleteTodo) => {
-    const filterTodo = todos.filter((i) => i.deleteTodo !== deleteTodo);
-    setTodos(filterTodo);
+  const deleteTodo = (id) => {
+    // const filterTodo = todos.filter((i) => i.deleteTodo !== id);
+    axios.delete(`http://localhost:3000/todos/${id}`).then((res) => {
+      console.log(res);
+      getTodos();
+    });
   };
 
-  const editTodo = () => {
-    setInput(input)
+  const editTodo = (todo) => {
+    setIsEditing(true);
+    setItemInEdit(todo);
+    setInput(todo.title);
   };
 
   function handleTodoAdd() {
@@ -33,55 +43,58 @@ function TodoList() {
       .then(function (res) {
         console.log(res);
         setInput("");
+        getTodos();
       });
   }
 
-  function handleDeleteClick() {
-    axios
-      .delete("http://localhost:3000/todos/2")
-      .then((res) => setTodos(res.data));
-  }
+  // function handleDeleteClick() {
+  //   axios
+  //     .delete("http://localhost:3000/todos/2")
+  //     .then((res) => setTodos(res.data));
+  // }
 
   function handleTodoSave() {
     axios
-      .patch("http://localhost:3000/todos/1", {
-        title: "John Doe",
+      .patch(`http://localhost:3000/todos/${itemInEdit.id}`, {
+        title: input,
       })
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        console.log(res.data);
+        setItemInEdit("");
+        setInput("");
+        setIsEditing(false);
+        getTodos();
+      });
   }
 
   return (
     <>
       <h1>Todo-List</h1>
-      {todos.map((todo) => {
-        return (
-          <div key={todo.id}>
-            {todo.title}
-            {todo.completed}
-          </div>
-        );
-      })}
-      <form>
-        <input
-          type="text"
-          placeholder="Add a new task...."
-          onChange={handleChange}
-          value={input}
-          className="input-type"
-        />
-        {input}
-        <button className="add" onClick={handleTodoAdd}>
-          add
-        </button>
-        <button onClick={handleTodoSave} className="save">
-          {" "}
-          Save
-        </button>
-        <button onClick={handleDeleteClick} className="delete">
-          Delet
-        </button>
-      </form>
+      <hr />
+
       <div className="todolist">
+        <form>
+          <input
+            type="text"
+            placeholder="Add a new task...."
+            onChange={handleChange}
+            value={input}
+            className="input-type"
+          />
+          {!isEditing && (
+            <button type="button" className="add" onClick={handleTodoAdd}>
+              add
+            </button>
+          )}
+          {isEditing && (
+            <>
+              <button type="button" onClick={handleTodoSave} className="save">
+                Save
+              </button>
+              <button type="button">Cancel</button>
+            </>
+          )}
+        </form>
         {todos.map((todo) => (
           <Todo
             todo={todo}
