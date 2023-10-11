@@ -1,0 +1,91 @@
+{
+  "posts": [
+    {
+      "id": 2,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "id": 6
+    },
+    {
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "id": 7
+    },
+    {
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "id": 8
+    },
+    {
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "id": 9
+    },
+    {
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "id": 10
+    },
+    {
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "id": 11
+    },
+    {
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "id": 12
+    },
+    {
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "id": 13
+    },
+    {
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "id": 14
+    },
+    {
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "id": 15
+    },
+    {
+      "title": "Fred",
+      "author": "Flintstone",
+      "id": 16
+    },
+    {
+      "title": "Fred",
+      "author": "Flintstone",
+      "id": 17
+    },
+    {
+      "title": "Fred",
+      "author": "Flintstone",
+      "id": 18
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  },
+  "todos": [
+    {
+      "userId": 1,
+      "id": 1,
+      "title": "John Doe",
+      "completed": false
+    },
+    {
+      "title": "todo",
+      "completed": "true",
+      "id": 3
+    }
+  ]
+}
